@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  //layout tablet e notebook
+  @media (max-width: 1080px) {
+    font-size: 93.75%; // => 15px
+  }
+  //layout mobile
+  @media (max-width: 700px) {
+    font-size: 87.5%; // => 14px
+  }
+}
+
+body {
+  background: #f8f8f8;
+  color: #29292e;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+button:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: 600;
+}
+
+button {
+  cursor: pointer;
+}
