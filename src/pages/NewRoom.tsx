@@ -2,12 +2,16 @@ import { Link } from "react-router-dom";
 
 import { Button } from "../components/Button";
 
+import { useAuth } from "../hooks/auth";
+
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
 
 import "../styles/pages/auth.scss";
 
 export function NewRoom() {
+  const { user } = useAuth();
+
   return (
     <div id="page-auth">
       <aside>
@@ -15,7 +19,7 @@ export function NewRoom() {
           src={illustrationImg}
           alt="Iluestração simbolizando perguntas e respostas"
         />
-        <strong>Crie salas de Q&amp;A ao-ivo</strong>
+        <strong>Crie salas de Q&amp;A ao vivo</strong>
         <p>Tira as dúvidas da sua audiência em tempo-real</p>
       </aside>
       <main>
