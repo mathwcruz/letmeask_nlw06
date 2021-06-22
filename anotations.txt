@@ -1,0 +1,2 @@
+- Adicionar autenticação com o Github
+- Ao fazer o deploy do app na Vercel, add o domínio do app na autenticação do Firebase
