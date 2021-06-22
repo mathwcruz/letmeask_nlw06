@@ -1,7 +1,9 @@
+import { Routes } from "./routes";
+
+import "./styles/global.scss";
+
 function App() {
-  return (
-    <div>Hellow NLW Together</div>
-  );
+  return <Routes />;
 }
 
 export default App;
