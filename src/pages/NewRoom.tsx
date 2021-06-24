@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
+import { FormEvent, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 import { Button } from "../components/Button";
 
 import { useAuth } from "../hooks/auth";
+
+import { database } from "../services/firebase";
 
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
@@ -10,14 +13,33 @@ import logoImg from "../assets/images/logo.svg";
 import "../styles/pages/auth.scss";
 
 export function NewRoom() {
+  const [newRoom, setNewRoom] = useState("");
   const { user } = useAuth();
+  const history = useHistory();
+
+  async function handleCreateRoom(e: FormEvent) {
+    e.preventDefault();
+
+    if (newRoom.trim() === "") {
+      return;
+    }
+
+    const roomRef = database.ref("rooms"); // o banco será organizado com base no "rooms"
+    const firebaseRoom = await roomRef.push({
+      // inserindo um novo dado no banco
+      title: newRoom,
+      authorId: user?.id,
+    });
+
+    history.push(`/rooms/${firebaseRoom?.key}`);
+  }
 
   return (
     <div id="page-auth">
       <aside>
         <img
           src={illustrationImg}
-          alt="Iluestração simbolizando perguntas e respostas"
+          alt="Ilustração simbolizando perguntas e respostas"
         />
         <strong>Crie salas de Q&amp;A ao vivo</strong>
         <p>Tira as dúvidas da sua audiência em tempo-real</p>
@@ -26,8 +48,13 @@ export function NewRoom() {
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />
           <h2>Criar uma nova sala</h2>
-          <form>
-            <input type="text" placeholder="Nome da sala" />
+          <form onSubmit={handleCreateRoom}>
+            <input
+              type="text"
+              placeholder="Nome da sala"
+              value={newRoom}
+              onChange={(e) => setNewRoom(e.target.value)}
+            />
             <Button type="submit">Criar sala</Button>
           </form>
           <p>
