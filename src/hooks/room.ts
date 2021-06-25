@@ -32,7 +32,7 @@ interface QuestionData {
   content: string;
   isHighlighted: boolean;
   isAnswered: boolean;
-  hasLiked: boolean;
+  likeId: string | undefined;
   likeCount: number;
 }
 
@@ -58,9 +58,9 @@ export function useRoom(id: string) {
             isHighlighted: value?.isHighlighted,
             isAnswered: value?.isAnswered,
             likeCount: Object.values(value?.likes ?? {})?.length,
-            hasLiked: Object.values(value?.likes ?? {})?.some(
-              (like) => like.authorId === user?.id
-            ),
+            likeId: Object.entries(value?.likes ?? {})?.find(
+              ([key, value]) => value.authorId === user?.id
+            )?.[0],
           };
         }
       );
