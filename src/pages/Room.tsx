@@ -1,6 +1,5 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import toast from "react-hot-toast";
 
 import { Button } from "../components/Button";
 import { RoomCode } from "../components/RoomCode";
@@ -78,12 +77,12 @@ export function Room() {
     e.preventDefault();
 
     if (newQuestion.trim() === "") {
-      toast.error("Campo de pergunta está vazio");
+      alert("Campo de pergunta está vazio");
       return;
     }
 
     if (!user) {
-      toast.error("Você precisa estar autenticado para fazer uma pergunta");
+      alert("Você precisa estar autenticado para fazer uma pergunta");
     }
 
     const question = {
