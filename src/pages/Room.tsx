@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { Button } from "../components/Button";
+import { Question } from "../components/Question";
 import { RoomCode } from "../components/RoomCode";
 
 import { useAuth } from "../hooks/auth";
@@ -146,7 +147,15 @@ export function Room() {
           </footer>
         </form>
 
-        {JSON.stringify(questions)}
+        <section className="question-list">
+          {questions?.map((question) => (
+            <Question
+              key={question?.id}
+              content={question?.content}
+              author={question?.author}
+            />
+          ))}
+        </section>
       </main>
     </div>
   );
