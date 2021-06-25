@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { Button } from "../components/Button";
 import { Question } from "../components/Question";
@@ -19,6 +19,7 @@ interface AdminRoomParams {
 }
 
 export function AdminRoom() {
+  const history = useHistory();
   const { id } = useParams<AdminRoomParams>();
 
   // const { user } = useAuth();
@@ -30,6 +31,14 @@ export function AdminRoom() {
     }
   }
 
+  async function handleEndRoom() {
+    await database.ref(`rooms/${id}`).update({
+      closedAt: new Date(),
+    });
+
+    history.push("/");
+  }
+
   return (
     <div className="page-room">
       <header>
@@ -37,7 +46,7 @@ export function AdminRoom() {
           <img src={logoImg} alt="Letmeask" />
           <div>
             <RoomCode code={id} />
-            <Button isOutlined onClick={() => console.log("olá")}>
+            <Button isOutlined onClick={handleEndRoom}>
               Encerrar sala
             </Button>
           </div>
@@ -70,7 +79,6 @@ export function AdminRoom() {
                 type="button"
                 onClick={() => handleDeleteQuestion(question?.id)}
               >
-                {/* <img src={deleteImg} alt="Remover pergunta" /> */}
                 <svg
                   width="24"
                   height="24"
