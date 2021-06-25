@@ -135,6 +135,14 @@
             }
           }
         }
+
+        &.delete-button {
+          &:hover {
+            svg path {
+              stroke: red;
+            }
+          }
+        }
       }
     }
   }
