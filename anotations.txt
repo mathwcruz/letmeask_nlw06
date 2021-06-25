@@ -4,3 +4,4 @@
 - useMemo e useCallback
 - Criar tela com listagem de todas as salas criadas
 - Na Room page, criar um botão que o user vai para uma sala aleatória
+- Criar modal para deleção de pergunta
