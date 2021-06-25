@@ -13,6 +13,15 @@
       > img {
         max-height: 45px;
       }
+
+      > div {
+        display: flex;
+        gap: 16px;
+
+        button {
+          height: 40px;
+        }
+      }
     }
   }
 
@@ -102,6 +111,31 @@
 
     .question-list {
       margin-top: 32px;
+
+      button {
+        background: transparent;
+        border: 0;
+        transition: filter 0.2s;
+
+        &:hover {
+          filter: brightness(0.8);
+        }
+
+        &.like-button {
+          display: flex;
+          align-items: flex-end;
+          color: #737380;
+          gap: 8px;
+
+          &.liked {
+            color: #835afd;
+
+            svg path {
+              stroke: #835afd;
+            }
+          }
+        }
+      }
     }
   }
 }

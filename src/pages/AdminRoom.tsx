@@ -14,12 +14,12 @@ import logoImg from "../assets/images/logo.svg";
 
 import "../styles/pages/room.scss";
 
-interface RoomParams {
+interface AdminRoomParams {
   id: string;
 }
 
-export function Room() {
-  const { id } = useParams<RoomParams>();
+export function AdminRoom() {
+  const { id } = useParams<AdminRoomParams>();
 
   const { user } = useAuth();
   const { questions, title } = useRoom(id);
@@ -58,7 +58,12 @@ export function Room() {
       <header>
         <div>
           <img src={logoImg} alt="Letmeask" />
-          <RoomCode code={id} />
+          <div>
+            <RoomCode code={id} />
+            <Button isOutlined onClick={() => console.log("olá")}>
+              Encerrar sala
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -75,29 +80,6 @@ export function Room() {
             </>
           )}
         </div>
-
-        <form onSubmit={handleSendQuestion}>
-          <textarea
-            placeholder="O que você quer perguntar?"
-            value={newQuestion}
-            onChange={(e) => setNewQuestion(e.target.value)}
-          />
-          <footer>
-            {!user ? (
-              <span>
-                Para enviar uma pergunta, <button>faça seu login</button>.
-              </span>
-            ) : (
-              <div className="user-info">
-                <img src={user?.avatar} alt={user?.name} />
-                <span>{user?.name}</span>
-              </div>
-            )}
-            <Button type="submit" disabled={!user}>
-              Enviar pergunta
-            </Button>
-          </footer>
-        </form>
 
         <section className="question-list">
           {questions?.map((question) => (
