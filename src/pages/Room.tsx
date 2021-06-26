@@ -89,7 +89,7 @@ export function Room() {
         </div>
       </header>
 
-      <main className="content">
+      <main>
         <div>
           <h1>Sala {title}</h1>
           {questions?.length > 0 && (
@@ -121,7 +121,7 @@ export function Room() {
                 <span>{user?.name}</span>
               </div>
             )}
-            <Button type="submit" disabled={!user}>
+            <Button id="send-question-button" type="submit" disabled={!user}>
               Enviar pergunta
             </Button>
           </footer>

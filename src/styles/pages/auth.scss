@@ -138,3 +138,15 @@
     }
   }
 }
+
+@media (max-width: 780px) {
+  #page-auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    aside {
+      display: none;
+    }
+  }
+}

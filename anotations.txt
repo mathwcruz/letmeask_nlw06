@@ -1,8 +1,8 @@
-- Animações (Lottie), responsividade
+- Animações (Lottie), responsividade (novas telas)
 
 - useMemo e useCallback
 
-- Criar tela com listagem de todas as salas criadas
+- Criar tela com listagem de todas as salas ativas
 - Criar modal para deleção de pergunta
 - Criar modal para encerrar a sala
 

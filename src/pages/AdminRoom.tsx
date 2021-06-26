@@ -55,7 +55,7 @@ export function AdminRoom() {
   return (
     <div className="page-room">
       <header>
-        <div>
+        <div className="admin-header">
           <img src={logoImg} alt="Letmeask" />
           <div>
             <RoomCode code={id} />
@@ -66,7 +66,7 @@ export function AdminRoom() {
         </div>
       </header>
 
-      <main className="content">
+      <main>
         <div>
           <h1>Sala {title}</h1>
           {questions?.length > 0 && (
