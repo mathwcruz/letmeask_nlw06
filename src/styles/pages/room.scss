@@ -143,6 +143,22 @@
             }
           }
         }
+
+        &.check-button {
+          &:hover {
+            svg path {
+              stroke: #835afd;
+            }
+          }
+        }
+
+        &.answer-button {
+          &:hover {
+            svg path {
+              stroke: #835afd;
+            }
+          }
+        }
       }
     }
   }

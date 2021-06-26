@@ -4,13 +4,11 @@ import { Button } from "../components/Button";
 import { Question } from "../components/Question";
 import { RoomCode } from "../components/RoomCode";
 
-// import { useAuth } from "../hooks/auth";
 import { useRoom } from "../hooks/room";
 
 import { database } from "../services/firebase";
 
 import logoImg from "../assets/images/logo.svg";
-// import deleteImg from "../assets/icons/delete.svg";
 
 import "../styles/pages/room.scss";
 
@@ -22,7 +20,6 @@ export function AdminRoom() {
   const history = useHistory();
   const { id } = useParams<AdminRoomParams>();
 
-  // const { user } = useAuth();
   const { questions, title } = useRoom(id);
 
   async function handleDeleteQuestion(questionId: string) {
@@ -91,7 +88,7 @@ export function AdminRoom() {
               {!question?.isAnswered && (
                 <>
                   <button
-                    className="check-button"
+                    className="answer-button"
                     type="button"
                     onClick={() => handleCheckQuestionAsAnswered(question?.id)}
                   >
@@ -107,9 +104,9 @@ export function AdminRoom() {
                         cy="11.9998"
                         r="9.00375"
                         stroke="#737380"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M8.44287 12.3391L10.6108 14.507L10.5968 14.493L15.4878 9.60193"
@@ -121,7 +118,7 @@ export function AdminRoom() {
                     </svg>
                   </button>
                   <button
-                    className="answer-button"
+                    className="check-button"
                     type="button"
                     onClick={() => handleHighlightQuestion(question?.id)}
                   >
