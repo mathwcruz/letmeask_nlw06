@@ -1,7 +1,10 @@
-- Ao fazer o deploy do app na Vercel, add o domínio do app na autenticação do Firebase
 - Ajustar estrutura de pastas e arquivos do app
-- Pequenas mudanças no layout, animações
+
+- usar as funcionalidades da lib classnames
+- Pequenas mudanças no layout, animações, responsividade, tema dark padrão (usar paleta da omni - rocketseat)
+
 - useMemo e useCallback
-- Criar tela com listagem de todas as salas criadas
+
 - Na Room page, criar um botão que o user vai para uma sala aleatória
+- Criar tela com listagem de todas as salas criadas
 - Criar modal para deleção de pergunta
