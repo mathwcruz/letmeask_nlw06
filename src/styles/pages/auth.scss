@@ -26,7 +26,7 @@
       font-size: 24px;
       line-height: 24px;
       margin-top: 16px;
-      color: #f8f8f8;
+      color: #e1e1e6;
     }
   }
 
@@ -60,8 +60,8 @@
           height: 50px;
           border-radius: 8px;
           padding: 0 16px;
-          background: #fff;
-          border: 1px solid #a8a8b3;
+          background: #e1e1e6;
+          border: 1px solid #835afd;
         }
 
         button {
@@ -76,7 +76,7 @@
 
       p {
         font-size: 14px;
-        color: #737380;
+        color: #e1e1e6;
         margin-top: 16px;
 
         a {
@@ -96,7 +96,7 @@
         border-radius: 8px;
         font-weight: 500;
         background: #ea4335;
-        color: #fff;
+        color: #e1e1e6;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -114,7 +114,7 @@
 
       .separator {
         font-size: 14px;
-        color: #a8a8b3;
+        color: #e1e1e6;
         margin: 32px 0;
         display: flex;
         align-items: center;
@@ -123,7 +123,7 @@
           content: "";
           flex: 1;
           height: 1px;
-          background: #a8a8b3;
+          background: #e1e1e6;
           margin-right: 16px;
         }
 
@@ -131,7 +131,7 @@
           content: "";
           flex: 1;
           height: 1px;
-          background: #a8a8b3;
+          background: #e1e1e6;
           margin-left: 16px;
         }
       }

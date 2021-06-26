@@ -1,4 +1,4 @@
-- Pequenas mudanças no layout, animações, responsividade, tema dark padrão (usar paleta da omni - rocketseat)
+- Animações (Lottie), responsividade
 
 - useMemo e useCallback
 
