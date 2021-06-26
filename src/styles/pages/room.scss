@@ -61,6 +61,10 @@
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
         resize: vertical;
         min-height: 130px;
+
+        &:focus {
+          border: 1px solid #835afd;
+        }
       }
 
       footer {
@@ -152,6 +156,12 @@
           color: #737380;
           gap: 8px;
 
+          &:hover {
+            svg path {
+              stroke: #835afd;
+            }
+          }
+
           &.liked {
             color: #835afd;
 
@@ -164,7 +174,7 @@
         &.delete-button {
           &:hover {
             svg path {
-              stroke: red;
+              stroke: #e73f5d;
             }
           }
         }

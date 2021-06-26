@@ -21,7 +21,7 @@ interface RoomParams {
 export function Room() {
   const { id } = useParams<RoomParams>();
 
-  const { user } = useAuth();
+  const { user, handleSignInWithGoogle } = useAuth();
   const { questions, title } = useRoom(id);
 
   const [newQuestion, setNewQuestion] = useState("");
@@ -51,6 +51,16 @@ export function Room() {
     await database.ref(`rooms/${id}/questions`).push(question); // inserindo um novo dado dentro de "rooms";
 
     setNewQuestion(""); // resetando o input
+  }
+
+  async function handleSignIn() {
+    if (!user) {
+      try {
+        await handleSignInWithGoogle();
+      } catch (error) {
+        alert("Erro na autenticação");
+      }
+    }
   }
 
   async function handleLikeQuestion(
@@ -100,7 +110,8 @@ export function Room() {
           <footer>
             {!user ? (
               <span>
-                Para enviar uma pergunta, <button>faça seu login</button>.
+                Para enviar uma pergunta,{" "}
+                <button onClick={handleSignIn}>faça seu login</button>.
               </span>
             ) : (
               <div className="user-info">
