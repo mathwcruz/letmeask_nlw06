@@ -18,10 +18,11 @@ interface AdminRoomParams {
 }
 
 export function AdminRoom() {
-  const history = useHistory();
   const { id } = useParams<AdminRoomParams>();
 
   const { questions, title } = useRoom(id);
+
+  const history = useHistory();
 
   async function handleDeleteQuestion(questionId: string) {
     if (window.confirm("Tem certeza que deseja excluir essa pergunta?")) {
@@ -30,11 +31,13 @@ export function AdminRoom() {
   }
 
   async function handleEndRoom() {
-    await database.ref(`rooms/${id}`).update({
-      closedAt: new Date(),
-    });
+    if (window.confirm("Tem certeza que deseja encerrar essa sala?")) {
+      await database.ref(`rooms/${id}`).update({
+        closedAt: new Date(),
+      });
 
-    history.push("/");
+      history.push("/");
+    }
   }
 
   async function handleCheckQuestionAsAnswered(questionId: string) {
@@ -82,7 +85,7 @@ export function AdminRoom() {
             <img src={emptyQuestionsImg} alt="Não há perguntas enviadas" />
             <h2>Nenhuma pergunta por aqui...</h2>
             <p>
-              Envie o código desta sala para seus amigos e comece a responder
+              Envie o código desta sala para o seus amigos e comece a responder
               perguntas!
             </p>
           </div>

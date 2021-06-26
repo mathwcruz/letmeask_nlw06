@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { useState, FormEvent } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import { Button } from "../components/Button";
@@ -13,9 +13,10 @@ import logoImg from "../assets/images/logo.svg";
 import "../styles/pages/auth.scss";
 
 export function NewRoom() {
-  const [newRoom, setNewRoom] = useState("");
   const { user } = useAuth();
+
   const history = useHistory();
+  const [newRoom, setNewRoom] = useState("");
 
   async function handleCreateRoom(e: FormEvent) {
     e.preventDefault();

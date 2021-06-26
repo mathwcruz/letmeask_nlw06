@@ -38,6 +38,7 @@ interface QuestionData {
 
 export function useRoom(id: string) {
   const { user } = useAuth();
+
   const [title, setTitle] = useState("");
   const [questions, setQuestions] = useState<QuestionData[]>([]);
 

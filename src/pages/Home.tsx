@@ -14,8 +14,9 @@ import googleIconImg from "../assets/icons/google-icon.svg";
 import "../styles/pages/auth.scss";
 
 export function Home() {
-  const history = useHistory();
   const { user, handleSignInWithGoogle } = useAuth();
+
+  const history = useHistory();
   const [roomCode, setRoomCode] = useState("");
 
   async function handleCreateRoom() {
@@ -61,7 +62,7 @@ export function Home() {
           src={illustrationImg}
           alt="Iluestração simbolizando perguntas e respostas"
         />
-        <strong>Crie salas de Q&amp;A ao-ivo</strong>
+        <strong>Crie salas de Q&amp;A ao vivo</strong>
         <p>Tira as dúvidas da sua audiência em tempo-real</p>
       </aside>
       <main>

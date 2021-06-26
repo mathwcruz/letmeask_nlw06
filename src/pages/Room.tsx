@@ -1,5 +1,6 @@
-import { FormEvent, useState } from "react";
+import { useState, FormEvent } from "react";
 import { useParams } from "react-router-dom";
+import classNames from "classnames";
 
 import { Button } from "../components/Button";
 import { Question } from "../components/Question";
@@ -104,7 +105,7 @@ export function Room() {
 
         <form onSubmit={handleSendQuestion}>
           <textarea
-            placeholder="O que você quer perguntar?"
+            placeholder="O que você deseja perguntar?"
             value={newQuestion}
             onChange={(e) => setNewQuestion(e.target.value)}
           />
@@ -149,9 +150,9 @@ export function Room() {
                 >
                   {!question?.isAnswered && (
                     <button
-                      className={`like-button ${
-                        question?.likeId ? "liked" : ""
-                      }`}
+                      className={classNames("like-button", {
+                        liked: question?.likeId,
+                      })}
                       type="button"
                       aria-label="Marcar como gostei"
                       onClick={() =>
