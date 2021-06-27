@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, useCallback, FormEvent } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Button } from "../components/Button";
@@ -19,7 +19,7 @@ export function Home() {
   const history = useHistory();
   const [roomCode, setRoomCode] = useState("");
 
-  async function handleCreateRoom() {
+  const handleCreateRoom = useCallback(async () => {
     if (!user) {
       try {
         await handleSignInWithGoogle();
@@ -29,31 +29,36 @@ export function Home() {
     }
 
     history.push("/rooms/new");
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
-  async function handleJoinRoom(e: FormEvent) {
-    e.preventDefault();
+  const handleJoinRoom = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault();
 
-    if (roomCode.trim() === "") {
-      alert("O campo de código da sala está vazio");
+      if (roomCode.trim() === "") {
+        alert("O campo de código da sala está vazio");
 
-      return;
-    }
+        return;
+      }
 
-    const roomRef = await database.ref(`rooms/${roomCode}`).get(); // buscando os dados do nome da sala inserida pelo user
+      const roomRef = await database.ref(`rooms/${roomCode}`).get(); // buscando os dados do nome da sala inserida pelo user
 
-    if (!roomRef.exists()) {
-      alert("Essa sala não existe");
-      return;
-    }
+      if (!roomRef.exists()) {
+        alert("Essa sala não existe");
+        return;
+      }
 
-    if (roomRef.val().closedAt) {
-      alert("Essa sala já foi encerrada");
-      return;
-    }
+      if (roomRef.val().closedAt) {
+        alert("Essa sala já foi encerrada");
+        return;
+      }
 
-    history.push(`/rooms/${roomCode}`);
-  }
+      history.push(`/rooms/${roomCode}`);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [roomCode]
+  );
 
   return (
     <div id="page-auth">

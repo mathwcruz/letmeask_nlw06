@@ -1,6 +1,7 @@
 - Animações (Lottie), responsividade (novas telas)
 
 - useMemo e useCallback
+- Usar use-context-selector
 
 - Criar tela com listagem de todas as salas ativas
 - Criar modal para deleção de pergunta

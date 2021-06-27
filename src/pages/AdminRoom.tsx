@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import { Button } from "../components/Button";
@@ -24,13 +25,7 @@ export function AdminRoom() {
 
   const history = useHistory();
 
-  async function handleDeleteQuestion(questionId: string) {
-    if (window.confirm("Tem certeza que deseja excluir essa pergunta?")) {
-      await database.ref(`rooms/${id}/questions/${questionId}`).remove();
-    }
-  }
-
-  async function handleEndRoom() {
+  const handleEndRoom = useCallback(async () => {
     if (window.confirm("Tem certeza que deseja encerrar essa sala?")) {
       await database.ref(`rooms/${id}`).update({
         closedAt: new Date(),
@@ -38,19 +33,35 @@ export function AdminRoom() {
 
       history.push("/");
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
-  async function handleCheckQuestionAsAnswered(questionId: string) {
-    await database.ref(`rooms/${id}/questions/${questionId}`).update({
-      isAnswered: true,
-    });
-  }
+  const handleDeleteQuestion = useCallback(
+    async (questionId: string) => {
+      if (window.confirm("Tem certeza que deseja excluir essa pergunta?")) {
+        await database.ref(`rooms/${id}/questions/${questionId}`).remove();
+      }
+    },
+    [id]
+  );
 
-  async function handleHighlightQuestion(questionId: string) {
-    await database.ref(`rooms/${id}/questions/${questionId}`).update({
-      isHighlighted: true,
-    });
-  }
+  const handleCheckQuestionAsAnswered = useCallback(
+    async (questionId: string) => {
+      await database.ref(`rooms/${id}/questions/${questionId}`).update({
+        isAnswered: true,
+      });
+    },
+    [id]
+  );
+
+  const handleHighlightQuestion = useCallback(
+    async (questionId: string) => {
+      await database.ref(`rooms/${id}/questions/${questionId}`).update({
+        isHighlighted: true,
+      });
+    },
+    [id]
+  );
 
   return (
     <div className="page-room">

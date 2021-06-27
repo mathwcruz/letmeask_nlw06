@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, useCallback, FormEvent } from "react";
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
 
@@ -28,34 +28,37 @@ export function Room() {
 
   const [newQuestion, setNewQuestion] = useState("");
 
-  async function handleSendQuestion(e: FormEvent) {
-    e.preventDefault();
+  const handleSendQuestion = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault();
 
-    if (newQuestion.trim() === "") {
-      alert("Campo de pergunta está vazio");
-      return;
-    }
+      if (newQuestion.trim() === "") {
+        alert("Campo de pergunta está vazio");
+        return;
+      }
 
-    if (!user) {
-      alert("Você precisa estar autenticado para fazer uma pergunta");
-    }
+      if (!user) {
+        alert("Você precisa estar autenticado para fazer uma pergunta");
+      }
 
-    const question = {
-      content: newQuestion,
-      author: {
-        name: user?.name,
-        avatar: user?.avatar,
-      },
-      isHighlighted: false,
-      isAnswered: false,
-    };
+      const question = {
+        content: newQuestion,
+        author: {
+          name: user?.name,
+          avatar: user?.avatar,
+        },
+        isHighlighted: false,
+        isAnswered: false,
+      };
 
-    await database.ref(`rooms/${id}/questions`).push(question); // inserindo um novo dado dentro de "rooms";
+      await database.ref(`rooms/${id}/questions`).push(question); // inserindo um novo dado dentro de "rooms";
 
-    setNewQuestion(""); // resetando o input
-  }
+      setNewQuestion(""); // resetando o input
+    },
+    [id, newQuestion, user]
+  );
 
-  async function handleSignIn() {
+  const handleSignIn = useCallback(async () => {
     if (!user) {
       try {
         await handleSignInWithGoogle();
@@ -63,22 +66,22 @@ export function Room() {
         alert("Erro na autenticação");
       }
     }
-  }
+  }, [handleSignInWithGoogle, user]);
 
-  async function handleLikeQuestion(
-    questionId: string,
-    likeId: string | undefined
-  ) {
-    if (likeId) {
-      await database
-        .ref(`rooms/${id}/questions/${questionId}/likes/${likeId}`)
-        .remove();
-    } else {
-      await database.ref(`rooms/${id}/questions/${questionId}/likes`).push({
-        authorId: user?.id,
-      });
-    }
-  }
+  const handleLikeQuestion = useCallback(
+    async (questionId: string, likeId: string | undefined) => {
+      if (likeId) {
+        await database
+          .ref(`rooms/${id}/questions/${questionId}/likes/${likeId}`)
+          .remove();
+      } else {
+        await database.ref(`rooms/${id}/questions/${questionId}/likes`).push({
+          authorId: user?.id,
+        });
+      }
+    },
+    [id, user]
+  );
 
   return (
     <div className="page-room">

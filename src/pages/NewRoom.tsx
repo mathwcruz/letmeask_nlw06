@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, useCallback, FormEvent } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import { Button } from "../components/Button";
@@ -18,23 +18,27 @@ export function NewRoom() {
   const history = useHistory();
   const [newRoom, setNewRoom] = useState("");
 
-  async function handleCreateRoom(e: FormEvent) {
-    e.preventDefault();
+  const handleCreateRoom = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault();
 
-    if (newRoom.trim() === "") {
-      alert("Campo de nome da sala está vazio");
-      return;
-    }
+      if (newRoom.trim() === "") {
+        alert("Campo de nome da sala está vazio");
+        return;
+      }
 
-    const roomRef = database.ref("rooms"); // o banco será organizado com base no "rooms"
-    const firebaseRoom = await roomRef.push({
-      // inserindo um novo dado no banco
-      title: newRoom,
-      authorId: user?.id,
-    });
+      const roomRef = database.ref("rooms"); // o banco será organizado com base no "rooms"
+      const firebaseRoom = await roomRef.push({
+        // inserindo um novo dado no banco
+        title: newRoom,
+        authorId: user?.id,
+      });
 
-    history.push(`/admin/rooms/${firebaseRoom?.key}`);
-  }
+      history.push(`/admin/rooms/${firebaseRoom?.key}`);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [newRoom, user]
+  );
 
   return (
     <div id="page-auth">

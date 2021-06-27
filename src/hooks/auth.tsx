@@ -3,6 +3,7 @@ import {
   useContext,
   useState,
   useEffect,
+  useCallback,
   ReactNode,
 } from "react";
 
@@ -50,7 +51,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     };
   }, []);
 
-  async function handleSignInWithGoogle() {
+  const handleSignInWithGoogle = useCallback(async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
 
     const result = await auth.signInWithPopup(provider);
@@ -68,7 +69,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
         avatar: photoURL,
       });
     }
-  }
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, handleSignInWithGoogle }}>
