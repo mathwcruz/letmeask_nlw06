@@ -5,7 +5,7 @@ import { Button } from "../components/Button";
 import { Question } from "../components/Question";
 import { RoomCode } from "../components/RoomCode";
 
-import { useRoom } from "../hooks/useRoom";
+import { useQuestion } from "../hooks/useQuestion";
 
 import { database } from "../services/firebase";
 
@@ -21,7 +21,7 @@ interface AdminRoomParams {
 export function AdminRoom() {
   const { id } = useParams<AdminRoomParams>();
 
-  const { questions, title } = useRoom(id);
+  const { questions, title } = useQuestion(id);
 
   const history = useHistory();
 

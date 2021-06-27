@@ -36,7 +36,7 @@ interface QuestionData {
   likeCount: number;
 }
 
-export function useRoom(id: string) {
+export function useQuestion(id: string) {
   const { user } = useAuth();
 
   const [title, setTitle] = useState("");

@@ -1,5 +1,6 @@
 - Responsividade (novas telas)
 
-- Criar tela com listagem de todas as salas ativas
+- Criar modal para deleção de pergunta
+- Criar modal para encerrar a sala
 
-URL deploy: https://letmeask-mathwcruz.web.app/
+- Criar tela com listagem de todas as salas ativas

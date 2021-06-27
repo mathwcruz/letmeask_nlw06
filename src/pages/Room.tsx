@@ -7,7 +7,7 @@ import { Question } from "../components/Question";
 import { RoomCode } from "../components/RoomCode";
 
 import { useAuth } from "../hooks/useAuth";
-import { useRoom } from "../hooks/useRoom";
+import { useQuestion } from "../hooks/useQuestion";
 
 import { database } from "../services/firebase";
 
@@ -24,7 +24,7 @@ export function Room() {
   const { id } = useParams<RoomParams>();
 
   const { user, handleSignInWithGoogle } = useAuth();
-  const { questions, title } = useRoom(id);
+  const { questions, title } = useQuestion(id);
 
   const [newQuestion, setNewQuestion] = useState("");
 
