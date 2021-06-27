@@ -6,6 +6,8 @@
 
 ## <p><h2 align="center">An app that brings together people who want to ask questions with those who want to answer them in the best way developed in #NLW06 delivered by [Rocketseat](https://app.rocketseat.com.br/dashboard)</h2> </p>
 
+### <p align="center"> <img src="./.github/NLW_Together.png" width="800px"/> </p>
+
 <p align="center">
   <a href="#computer-demonstration-of-the-application-web">Demonstration of the application</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-technologies-used">Technologies used</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
