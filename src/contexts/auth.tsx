@@ -1,11 +1,5 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-  ReactNode,
-} from "react";
+import { useState, useEffect, useCallback, ReactNode } from "react";
+import { createContext } from "use-context-selector";
 
 import { auth, firebase } from "../services/firebase";
 
@@ -24,7 +18,7 @@ interface AuthContextProviderProps {
   children: ReactNode;
 }
 
-const AuthContext = createContext({} as AuthContextData);
+export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
   const [user, setUser] = useState<User>();
@@ -77,7 +71,3 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     </AuthContext.Provider>
   );
 }
-
-export const useAuth = () => {
-  return useContext(AuthContext);
-};

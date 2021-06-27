@@ -1,4 +1,4 @@
-import { AuthContextProvider } from "./hooks/auth";
+import { AuthContextProvider } from "./contexts/auth";
 
 import { Routes } from "./routes";
 
