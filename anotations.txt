@@ -1,5 +1,7 @@
 - Responsividade (novas telas)
 
+- Mostrar ao admin, quantos likes tal pergunta tem
+
 - Criar modal para deleção de pergunta
 - Criar modal para encerrar a sala
 
