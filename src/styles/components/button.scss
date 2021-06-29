@@ -28,10 +28,5 @@
     background: #fff;
     border: 1px solid #835afd;
     color: #835afd;
-    transition: transform 0.3s;
-
-    &:not(:disabled):hover {
-      transform: translate3d(1px, 1px, 3px);
-    }
   }
 }
