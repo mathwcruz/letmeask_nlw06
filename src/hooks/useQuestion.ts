@@ -66,9 +66,14 @@ export function useQuestion(id: string) {
         }
       );
 
-      const questionsSorted = parsedQuestions.sort(
-        (a, b) => a?.likeCount - b?.likeCount
-      );
+      const questionsSorted = parsedQuestions.sort((a, b) => {
+        if (a?.likeCount < b?.likeCount) {
+          return 1;
+        } else if (a?.likeCount > b?.likeCount) {
+          return -1;
+        }
+        return 0;
+      });
 
       setTitle(databaseRoom?.title);
       setQuestions(questionsSorted);
