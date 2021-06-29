@@ -1,6 +1,0 @@
-- Responsividade (novas telas)
-
-- Criar animação para para deleção de pergunta
-- Criar animação para modal para encerrar a sala
-
-- Criar tela com listagem de todas as salas ativas
