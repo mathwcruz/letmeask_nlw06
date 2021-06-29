@@ -64,6 +64,8 @@ button {
 }
 
 .modal-content {
+  padding: 0 15px;
+
   > div {
     margin: 0 auto;
     padding: 60px 80px;
@@ -131,6 +133,25 @@ button {
           background: #e73f5d;
           color: #fff;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .modal-content {
+    > div {
+      width: 320px;
+    }
+
+    footer {
+      flex-direction: column;
+
+      button {
+        height: 40px;
+        width: 130px;
+        border-radius: 8px;
+        padding: 12px 20px;
       }
     }
   }
