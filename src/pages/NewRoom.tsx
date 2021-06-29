@@ -1,5 +1,6 @@
 import { useState, useCallback, FormEvent } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { Button } from "../components/Button";
 
@@ -23,7 +24,7 @@ export function NewRoom() {
       e.preventDefault();
 
       if (newRoom.trim() === "") {
-        alert("Campo de nome da sala está vazio");
+        toast("Campo de nome da sala está vazio");
         return;
       }
 

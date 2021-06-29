@@ -1,6 +1,7 @@
 import { useState, useCallback, FormEvent } from "react";
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
+import { toast } from "react-toastify";
 
 import { Button } from "../components/Button";
 import { Question } from "../components/Question";
@@ -33,12 +34,12 @@ export function Room() {
       e.preventDefault();
 
       if (newQuestion.trim() === "") {
-        alert("Campo de pergunta está vazio");
+        toast("Campo de pergunta está vazio");
         return;
       }
 
       if (!user) {
-        alert("Você precisa estar autenticado para fazer uma pergunta");
+        toast.error("Você precisa estar autenticado para fazer uma pergunta");
       }
 
       const question = {
@@ -63,7 +64,7 @@ export function Room() {
       try {
         await handleSignInWithGoogle();
       } catch (error) {
-        alert("Erro na autenticação");
+        toast.error("Erro na autenticação");
       }
     }
   }, [handleSignInWithGoogle, user]);

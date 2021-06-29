@@ -1,5 +1,6 @@
 import { useState, useCallback, FormEvent } from "react";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { Button } from "../components/Button";
 
@@ -24,7 +25,7 @@ export function Home() {
       try {
         await handleSignInWithGoogle();
       } catch (error) {
-        alert("Erro na autenticação");
+        toast("Erro na autenticação");
       }
     }
 
@@ -37,20 +38,19 @@ export function Home() {
       e.preventDefault();
 
       if (roomCode.trim() === "") {
-        alert("O campo de código da sala está vazio");
-
+        toast("O campo de código da sala está vazio");
         return;
       }
 
       const roomRef = await database.ref(`rooms/${roomCode}`).get(); // buscando os dados do nome da sala inserida pelo user
 
       if (!roomRef.exists()) {
-        alert("Essa sala não existe");
+        toast.error("Essa sala não existe");
         return;
       }
 
       if (roomRef.val().closedAt) {
-        alert("Essa sala já foi encerrada");
+        toast("Essa sala já foi encerrada");
         return;
       }
 

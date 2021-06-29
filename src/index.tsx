@@ -1,10 +1,7 @@
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 
-import App from './App';
+import App from "./App";
 
-import './services/firebase';
+import "./services/firebase";
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById("root"));
