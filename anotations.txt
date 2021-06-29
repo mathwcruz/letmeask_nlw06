@@ -2,7 +2,6 @@
 
 - Criar animação para para deleção de pergunta
 - Criar animação para modal para encerrar a sala
-- Responsividade nos modais
 
 - toast para usar como o message do ant, nao usar o alert()
 
