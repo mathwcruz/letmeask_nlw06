@@ -154,6 +154,7 @@ export function AdminRoom() {
                   author={question?.author}
                   isHighlighted={question?.isHighlighted}
                   isAnswered={question?.isAnswered}
+                  questionLikeCount={question?.likeCount}
                 >
                   {!question?.isAnswered && (
                     <>

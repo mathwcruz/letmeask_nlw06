@@ -1,4 +1,5 @@
 .question {
+  position: relative;
   background: #e1e1e6;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
@@ -52,6 +53,26 @@
     > div {
       display: flex;
       gap: 16px;
+    }
+  }
+
+  > span {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    position: absolute;
+    font-size: 18px;
+    font-weight: 500;
+    color: #835afd;
+    top: 12px;
+    right: 25px;
+
+    svg {
+      width: 22px;
+
+      path {
+        stroke: #835afd;
+      }
     }
   }
 }
