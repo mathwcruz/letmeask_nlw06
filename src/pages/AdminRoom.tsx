@@ -1,5 +1,6 @@
-import { useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import Modal from "react-modal";
 
 import { Button } from "../components/Button";
 import { Question } from "../components/Question";
@@ -18,29 +19,34 @@ interface AdminRoomParams {
   id: string;
 }
 
-export function AdminRoom() {
-  const { id } = useParams<AdminRoomParams>();
+Modal.setAppElement("#root");
 
+export function AdminRoom() {
+  const [isCloseRoomModalOpen, setIsCloseModalOpen] = useState(false);
+  const [questionIdModalOpen, setQuestionIdModalOpen] = useState<
+    string | undefined
+  >();
+
+  const { id } = useParams<AdminRoomParams>();
   const { questions, title } = useQuestion(id);
 
   const history = useHistory();
 
   const handleEndRoom = useCallback(async () => {
-    if (window.confirm("Tem certeza que deseja encerrar essa sala?")) {
-      await database.ref(`rooms/${id}`).update({
-        closedAt: new Date(),
-      });
+    await database.ref(`rooms/${id}`).update({
+      closedAt: new Date(),
+    });
 
-      history.push("/");
-    }
+    history.push("/");
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const handleDeleteQuestion = useCallback(
     async (questionId: string) => {
-      if (window.confirm("Tem certeza que deseja excluir essa pergunta?")) {
-        await database.ref(`rooms/${id}/questions/${questionId}`).remove();
-      }
+      await database.ref(`rooms/${id}/questions/${questionId}`).remove();
+
+      setQuestionIdModalOpen(undefined);
     },
     [id]
   );
@@ -70,10 +76,43 @@ export function AdminRoom() {
           <img src={logoImg} alt="Letmeask" />
           <div>
             <RoomCode code={id} />
-            <Button isOutlined onClick={handleEndRoom}>
+            <Button isOutlined onClick={() => setIsCloseModalOpen(true)}>
               Encerrar sala
             </Button>
           </div>
+          <Modal
+            overlayClassName="react-modal-overlay"
+            className="modal-content"
+            onRequestClose={() => setIsCloseModalOpen(false)}
+            isOpen={isCloseRoomModalOpen}
+          >
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-x-circle"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              <h3>Encerrar sala</h3>
+              <p>Tem certeza que você deseja encerrar esta sala?</p>
+              <footer>
+                <button onClick={() => setIsCloseModalOpen(false)}>
+                  Cancelar
+                </button>
+                <button onClick={handleEndRoom}>Sim, encerrar</button>
+              </footer>
+            </div>
+          </Modal>
         </div>
       </header>
 
@@ -103,7 +142,7 @@ export function AdminRoom() {
         ) : (
           <>
             <section className="question-list">
-              {questions?.map((question) => (
+              {questions?.map((question) => [
                 <Question
                   key={question?.id}
                   content={question?.content}
@@ -173,7 +212,7 @@ export function AdminRoom() {
                   <button
                     className="delete-button"
                     type="button"
-                    onClick={() => handleDeleteQuestion(question?.id)}
+                    onClick={() => setQuestionIdModalOpen(question?.id)}
                   >
                     <svg
                       width="24"
@@ -198,8 +237,44 @@ export function AdminRoom() {
                       />
                     </svg>
                   </button>
-                </Question>
-              ))}
+                </Question>,
+                <Modal
+                  overlayClassName="react-modal-overlay"
+                  className="modal-content"
+                  onRequestClose={() => setQuestionIdModalOpen(undefined)}
+                  isOpen={questionIdModalOpen === question?.id}
+                >
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-trash"
+                    >
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    <h3>Excluir pergunta</h3>
+                    <p>Tem certeza que você deseja excluir esta pergunta?</p>
+                    <footer>
+                      <button onClick={() => setQuestionIdModalOpen(undefined)}>
+                        Cancelar
+                      </button>
+                      <button
+                        onClick={() => handleDeleteQuestion(question?.id)}
+                      >
+                        Sim, excluir
+                      </button>
+                    </footer>
+                  </div>
+                </Modal>,
+              ])}
             </section>
           </>
         )}
