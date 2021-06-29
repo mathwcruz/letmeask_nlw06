@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import Modal from "react-modal";
 
 import { Button } from "../components/Button";
@@ -37,6 +38,8 @@ export function AdminRoom() {
       closedAt: new Date(),
     });
 
+    toast.success("A sala foi encerrada");
+
     history.push("/");
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,6 +50,8 @@ export function AdminRoom() {
       await database.ref(`rooms/${id}/questions/${questionId}`).remove();
 
       setQuestionIdModalOpen(undefined);
+
+      toast.success("Pergunta excluída com sucesso");
     },
     [id]
   );
