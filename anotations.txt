@@ -1,8 +1,9 @@
 - Responsividade (novas telas)
 
-- Mostrar ao admin, quantos likes tal pergunta tem
+- Criar animação para para deleção de pergunta
+- Criar animação para modal para encerrar a sala
+- Responsividade nos modais
 
-- Criar modal para deleção de pergunta
-- Criar modal para encerrar a sala
+- toast para usar como o message do ant, nao usar o alert()
 
 - Criar tela com listagem de todas as salas ativas
