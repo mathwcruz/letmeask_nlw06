@@ -31,7 +31,7 @@
 <br>
 
 <h3 align="center"> 
-	 Application status: In Progress 🚧
+	 Application status: Finalized ✔️
 </h3>
 
 <br>
