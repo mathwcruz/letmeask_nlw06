@@ -63,7 +63,6 @@
 - [x] Mark a question as answered
 - [x] Delete a question
 - [x] Close the room
-- [ ] Listing page of all open rooms
 
 <br>
 
