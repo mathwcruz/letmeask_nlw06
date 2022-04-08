@@ -4,7 +4,7 @@
 
 ## **<h2 align="center">Front end application  💻</h2>**
 
-## <p><h2 align="center">An app that brings together people who want to ask questions with those who want to answer them in the best way developed in #NLW06 delivered by [Rocketseat](https://app.rocketseat.com.br/dashboard)</h2> </p>
+## <p><h2 align="center">An [app](https://letmeask-mathwcruz.web.app) that brings together people who want to ask questions with those who want to answer them in the best way</h2> </p>
 
 ### <p align="center"> <img src="./.github/NLW_Together.png" width="800px"/> </p>
 
@@ -46,10 +46,6 @@
 * Performance with useMemo() and useCallback()
 * Changes in project structure
 * Small additions in stylizations
-
-<h2 align="center"> 
-	Web application: https://letmeask-mathwcruz.web.app/
-</h2>
 <br>
 
 ## :star: Features
@@ -104,3 +100,5 @@ Desenvolvido por Matheus da Cruz 😊
 [![Linkedin Badge](https://img.shields.io/badge/-Matheus-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/matheus-cruz-frontend/)](https://www.linkedin.com/in/matheus-cruz-frontend/) 
 [![Gmail Badge](https://img.shields.io/badge/-matheuswachcruz@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:matheuswachcruz@gmail.com)](mailto:matheuswachcruz@gmail.com)
 <br>
+
+ ### <p> <h2 align="center">Another application made by Matheus da Cruz 👨‍💻 </h2> </p>
