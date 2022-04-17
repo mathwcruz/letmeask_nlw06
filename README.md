@@ -2,9 +2,9 @@
   <img src="./src/assets/images/logo.svg" alt="Logo do letmeask" width="150">
 </h1>
 
-## **<h2 align="center">Front end application  💻</h2>**
+<h2 align="center">Front end application  💻</h2>
 
-## <p><h2 align="center">An [app](https://letmeask-mathwcruz.web.app) that brings together people who want to ask questions with those who want to answer them in the best way</h2> </p>
+## <h4 align="center">An [app](https://letmeask-mathwcruz.web.app) that brings together people who want to ask questions with those who want to answer them in the best way</h4>
 
 <p align="center">
   <a href="#computer-demonstration-of-the-application-web">Demonstration of the application</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -99,4 +99,4 @@ Desenvolvido por Matheus da Cruz 😊
 [![Gmail Badge](https://img.shields.io/badge/-matheuswachcruz@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:matheuswachcruz@gmail.com)](mailto:matheuswachcruz@gmail.com)
 <br>
 
- ### <p> <h2 align="center">Another application made by Matheus da Cruz 👨‍💻 </h2> </p>
+ ### <p> <h2 align="center">Another application developed by Matheus da Cruz 👨‍💻 </h2> </p>
